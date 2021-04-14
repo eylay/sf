@@ -15,7 +15,7 @@ class ShopController extends Controller
 
     public function create()
     {
-        //
+        return view('shop.create');
     }
 
     public function store(Request $request)
