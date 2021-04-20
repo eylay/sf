@@ -106,8 +106,11 @@ return [
         'username' => 'نام کاربری',
         'address' => 'آدرس',
 
-        // ...
-
+        // product form
+        'price' => 'قیمت',
+        'discount' => 'تخفیف',
+        'description' => 'توضیحات',
+        'image' => 'تصویر',
     ),
 
 
