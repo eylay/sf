@@ -5,5 +5,16 @@
         </h2>
     </x-slot>
 
-    salam
+    @admin
+        Admin
+    @endadmin
+
+    @shop
+        Shop
+    @endshop
+
+    @user
+        User
+    @enduser
+    
 </x-app-layout>
