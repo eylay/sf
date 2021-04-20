@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     public function edit(Product $product)
