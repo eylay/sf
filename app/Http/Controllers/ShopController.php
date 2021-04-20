@@ -67,11 +67,6 @@ class ShopController extends Controller
         return redirect()->route('shop.index')->withMessage( __('SUCCESS') );
     }
 
-    public function show(Shop $shop)
-    {
-        //
-    }
-
     public function edit(Shop $shop)
     {
         return view('shop.form', compact('shop'));
