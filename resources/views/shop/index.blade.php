@@ -20,7 +20,10 @@
                     <th> عنوان </th>
                     <th> نام شخص </th>
                     <th> تلفن </th>
+                    <th> ایمیل </th>
+                    <th> نام کاربری </th>
                     <th> تاریخ شروع فعالیت </th>
+                    <th colspan="2"> عملیات </th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +33,23 @@
                         <td> {{$shop->title}} </td>
                         <td> {{$shop->full_name}} </td>
                         <td> {{$shop->telephone}} </td>
+                        <td> {{$shop->user->email ?? '-'}} </td>
+                        <td> {{$shop->user->name ?? '-'}} </td>
                         <td> {{persianDate($shop->created_at)}} </td>
+                        <td>
+                            <a href="{{route('shop.edit', $shop->id)}}" class="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-500 active:bg-green-900 focus:outline-none focus:border-green-700 focus:ring focus:ring-green-300 disabled:opacity-25 transition">
+                                ویرایش
+                            </a>
+                        </td>
+                        <td>
+                            <form action="{{route('shop.destroy', $shop->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-900 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-300 disabled:opacity-25 transition">
+                                    حذف
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
