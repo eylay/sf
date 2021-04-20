@@ -7,17 +7,13 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
         @livewireStyles
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+
     </head>
     <body class="antialiased">
         <x-jet-banner />
@@ -57,6 +53,12 @@
         </div>
 
         @stack('modals')
+
+
+        <!-- Scripts -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
 
         @livewireScripts
     </body>
