@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\NewShop;
 
 class ShopController extends Controller
 {
@@ -57,6 +58,9 @@ class ShopController extends Controller
             'telephone' => $request->telephone,
             'address' => $request->address,
         ]);
+
+        // notify user
+        $user->notify(new NewShop($user->email, $randomPass));
 
         // redirect
         return redirect()->route('shop.index')->withMessage( __('SUCCESS') );
