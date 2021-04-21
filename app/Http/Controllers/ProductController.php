@@ -12,7 +12,7 @@ class ProductController extends Controller
     private $validationRules = [
         'title' => 'required|string|min:3',
         'price' => 'required|integer',
-        'discount' => 'nullable|integer|between:1,100',
+        'discount' => 'nullable|integer|between:0,100',
         'description' => 'nullable|string',
         'image' => 'nullable|image|max:2000'
     ];
@@ -73,6 +73,12 @@ class ProductController extends Controller
         if (isset($data['image']) && $data['image']) {
             $data['image'] = upload($data['image']);
         }
+
+        $currentUser = auth()->user();
+        if ($currentUser->is('admin')) {
+            $data['shop_id'] = $request->shop_id;
+        }
+
         $product->update($data);
         return redirect()->route('product.index')->withMessage( __('SUCCESS') );
     }
