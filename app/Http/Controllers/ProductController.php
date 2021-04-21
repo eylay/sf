@@ -43,10 +43,20 @@ class ProductController extends Controller
     {
         $data = $request->validate($this->validationRules);
 
-        $data['shop_id'] = currentShopId();
         if (isset($data['image']) && $data['image']) {
             $data['image'] = upload($data['image']);
         }
+        if (!$data['discount']) {
+            $data['discount'] = 0;
+        }
+
+        $currentUser = auth()->user();
+        if ($currentUser->is('admin')) {
+            $data['shop_id'] = $request->shop_id;
+        }else {
+            $data['shop_id'] = currentShopId();
+        }
+
         Product::create($data);
         return redirect()->route('product.index')->withMessage( __('SUCCESS') );
     }
