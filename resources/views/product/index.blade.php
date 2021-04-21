@@ -31,10 +31,11 @@
         <div class="w-1/4 my-3 px-3">
             <label class="block mb-2"> مرتب سازی </label>
             <select class="w-full" name="o">
-                <option value="1"> ارزانترین </option>
-                <option value="2"> گران ترین </option>
-                <option value="3"> جدیدترین </option>
-                <option value="4"> قدیمی ترین </option>
+                <option value=""> -- انتخاب کنید -- </option>
+                <option @if(request('o') == 1) selected @endif value="1"> ارزانترین </option>
+                <option @if(request('o') == 2) selected @endif value="2"> گران ترین </option>
+                <option @if(request('o') == 3) selected @endif value="3"> جدیدترین </option>
+                <option @if(request('o') == 4) selected @endif value="4"> قدیمی ترین </option>
             </select>
         </div>
         <div class="w-1/4 my-3 px-3">
