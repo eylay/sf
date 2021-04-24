@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
-    
+
     protected $guarded = ['id'];
     protected $appends = ['cost'];
 

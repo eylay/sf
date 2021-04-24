@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <hr>
-                <img src="{{asset($product->image)}}">
+                <img src="{{asset($product->image ?? 'img/empty.jpg')}}">
                 <p class="mt-3">
                     @if ($product->description)
                         {{$product->description}}
