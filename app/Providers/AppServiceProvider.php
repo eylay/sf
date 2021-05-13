@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // custom blade if statements
         Blade::if('admins', function () {
             return auth()->check() && (auth()->user()->is('admin') || auth()->user()->is('shop'));
         });
@@ -36,5 +38,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('user', function () {
             return auth()->check() && auth()->user()->is('user');
         });
+
+
+        // set paginator to use bootstrap
+        if (strpos(request()->path(), 'landing') === 0) {
+           Paginator::useBootstrap();
+        }
     }
 }
