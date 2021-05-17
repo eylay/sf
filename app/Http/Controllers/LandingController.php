@@ -20,7 +20,8 @@ class LandingController extends Controller
 
     public function showShop(Shop $shop)
     {
-        return view('landing.shop', compact('shop'));
+        $products = Product::where('shop_id', $shop->id)->paginate(9);
+        return view('landing.shop', compact('shop', 'products'));
     }
 
     public function products()
