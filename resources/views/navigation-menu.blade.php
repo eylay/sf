@@ -25,6 +25,9 @@
                             مدیریت محصولات
                         </x-jet-nav-link>
                     @endadmins
+                    <x-jet-nav-link href="{{ route('order.index') }}" :active="request()->routeIs('order.index')">
+                        لیست سفارشات
+                    </x-jet-nav-link>
                 </div>
             </div>
 
