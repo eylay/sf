@@ -49,12 +49,12 @@
                     <a href="#"> {{$product->shop->title ?? '-'}} </a>
                     @if ($cart_item = $product->isInCart())
                         <div>
-                            <button type="submit" name="type" value="minus" class="btn btn-warning text-white btn-sm"> - </button>
+                            <button type="button" name="type" value="minus" class="btn btn-warning text-white btn-sm manage-cart"> - </button>
                             <span class="cart-count"> {{$cart_item->count}} </span>
-                            <button type="submit" name="type" value="add" class="btn btn-warning text-white btn-sm"> + </button>
+                            <button type="button" name="type" value="add" class="btn btn-warning text-white btn-sm manage-cart"> + </button>
                         </div>
                     @else
-                        <button type="submit" name="type" value="add" class="btn btn-info text-white px-3 btn-sm"> اضافه کردن به سبد خرید </button>
+                        <button type="button" name="type" value="add" class="btn btn-info text-white px-3 btn-sm manage-cart"> اضافه کردن به سبد خرید </button>
                     @endif
                 </form>
             </div>
