@@ -20,7 +20,7 @@ class CartController extends Controller
             if ($cart_item = $product->isInCart()) {
                 if ($type == 'minus' && $cart_item->count == 1) {
                     $cart_item->delete();
-                    return back()->withMessage('آیتم مورد نظر از سبد خرید شما حذف شد.');
+                    return 'آیتم مورد نظر از سبد خرید شما حذف شد.';
                 }else {
                     if ($type == 'add') {
                         $cart_item->count++;
@@ -38,10 +38,10 @@ class CartController extends Controller
                     'payable' => $product->cost,
                 ]);
             }
-            return back()->withMessage('آیتم مورد نظر به سبد خرید اضافه شد.');
+            return 'آیتم مورد نظر به سبد خرید اضافه شد.';
 
         }else {
-            return back()->withError('لطفا ابتدا وارد حساب کاربری خود شوید.');
+            return 'لطفا ابتدا وارد حساب کاربری خود شوید.';
         }
     }
 

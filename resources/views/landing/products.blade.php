@@ -45,7 +45,6 @@
                 </p>
                 <hr>
                 <form class="d-flex justify-content-between align-items-center" method="post" action="{{route('cart.manage', $product->id)}}">
-                    @csrf
                     <a href="#"> {{$product->shop->title ?? '-'}} </a>
                     @if ($cart_item = $product->isInCart())
                         <div>
