@@ -55,6 +55,9 @@
                         <button type="button" name="type" value="add" class="btn btn-info text-white px-3 btn-sm manage-cart"> اضافه کردن به سبد خرید </button>
                     </div>
                 </form>
+                <div class="hidden alert alert-danger mt-2">
+                    
+                </div>
             </div>
         @endforeach
     </div>

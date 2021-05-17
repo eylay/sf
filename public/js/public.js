@@ -18,12 +18,33 @@ $(document).on('click', '.manage-cart', function () {
             type : type
         },
         success: function(res) {
-            var inCartDiv = form.children('.in-cart');
-            var notInCartDiv = form.children('.not-in-cart');
-            inCartDiv.show();
-            notInCartDiv.hide();
-            form.find('.cart-count').text(res.count);
-            $('#cart > span').text(res.totalCount)
+
+            var alertBox = form.siblings('.alert');
+
+            if (res.error) {
+
+                alertBox.text(res.error);
+                alertBox.show();
+
+            }else {
+
+                alertBox.hide();
+                
+                var inCartDiv = form.children('.in-cart');
+                var notInCartDiv = form.children('.not-in-cart');
+
+                if (res.count == 0) {
+                    inCartDiv.hide();
+                    notInCartDiv.show();
+                }else {
+                    inCartDiv.show();
+                    notInCartDiv.hide();
+                }
+
+                form.find('.cart-count').text(res.count);
+                $('#cart > span').text(res.totalCount)
+            }
+
         }
     });
 });
