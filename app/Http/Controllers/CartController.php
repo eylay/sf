@@ -20,7 +20,6 @@ class CartController extends Controller
             if ($cart_item = $product->isInCart()) {
                 if ($type == 'minus' && $cart_item->count == 1) {
                     $cart_item->delete();
-                    return 'آیتم مورد نظر از سبد خرید شما حذف شد.';
                 }else {
                     if ($type == 'add') {
                         $cart_item->count++;
@@ -31,17 +30,23 @@ class CartController extends Controller
                     $cart_item->save();
                 }
             }else {
-                CartItem::create([
+                $cart_item = CartItem::create([
                     'cart_id' => $cart->id,
                     'product_id' => $product->id,
                     'count' => 1,
                     'payable' => $product->cost,
                 ]);
             }
-            return 'آیتم مورد نظر به سبد خرید اضافه شد.';
+
+            return [
+                'count' => $cart_item->count,
+                'totalCount' => $cart->count,
+            ];
 
         }else {
-            return 'لطفا ابتدا وارد حساب کاربری خود شوید.';
+            return [
+                'error' => 'لطفا ابتدا وارد حساب کاربری خود شوید.'
+            ];
         }
     }
 
