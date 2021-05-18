@@ -15,6 +15,7 @@ class OrderController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin')->only('destroy');
+        $this->middleware('admins')->only('changeStatus');
     }
 
     public function index()
@@ -45,6 +46,13 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         return view('order.show', compact('order'));
+    }
+
+    public function changeStatus(CartItem $cart_item, Request $request)
+    {
+        $cart_item->status = $request->status;
+        $cart_item->save();
+        return back()->withMessage( __('SUCCESS') );
     }
 
     public function destroy(Order $order)
