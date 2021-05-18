@@ -37,11 +37,17 @@
                                 جزییات
                             </a>
                         </td>
-                        <td>
-                            <button type="button" class="delete-record inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-900 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-300 disabled:opacity-25 transition">
-                                حذف
-                            </button>
-                        </td>
+                        @admin
+                            <td>
+                                <form class="" action="{{route('order.destroy', $order->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="delete-record inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-900 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-300 disabled:opacity-25 transition">
+                                        حذف
+                                    </button>
+                                </form>
+                            </td>
+                        @endadmin
                     </tr>
                 @endforeach
             </tbody>
