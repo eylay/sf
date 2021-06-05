@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $role == $this->role;
     }
+
+    public function products()
+    {
+        return $this->hasManyThrough(Product::class, Shop::class);
+    }
 }
