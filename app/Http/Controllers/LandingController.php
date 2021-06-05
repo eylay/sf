@@ -24,6 +24,11 @@ class LandingController extends Controller
         return view('landing.shop', compact('shop', 'products'));
     }
 
+    public function showProduct(Product $product)
+    {
+        return view('landing.product', compact('product'));
+    }
+
     public function products()
     {
         $products = Product::query();
