@@ -11,7 +11,7 @@ class CartController extends Controller
 {
     public function manage(Product $product, Request $request)
     {
-        $type = $request->type;
+        $type = $request->type; // add, remove
         $currentLoggedInUser = auth()->user();
         if ($currentLoggedInUser) {
 
