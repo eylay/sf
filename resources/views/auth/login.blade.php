@@ -35,11 +35,20 @@
             <hr class="my-4">
 
             <div class="flex items-center justify-between">
-                @if (Route::has('password.request'))
-                    <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
+
+                <div>
+                    @if (Route::has('password.request'))
+                        <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                        </a>
+                    @endif
+                    <br>
+                    @if (Route::has('register'))
+                        <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                            میخواهید ثبت نام کنید؟
+                        </a>
+                    @endif
+                </div>
 
                 <x-jet-button class="mr-4">
                     {{ __('Log in') }}
