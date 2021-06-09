@@ -36,15 +36,18 @@ function currentShopId()
 
 function checkPolicy($case, $object)
 {
-    switch ($case) {
-        case 'product':
-            if ($object->shop_id != currentShopId()) {
+    $user = auth()->user();
+    if (!$user->role == 'admin') {
+        switch ($case) {
+            case 'product':
+                if ($object->shop_id != currentShopId()) {
+                    abort(404);
+                }
+                break;
+            default:
                 abort(404);
-            }
-            break;
-        default:
-            abort(404);
-            break;
+                break;
+        }
     }
 }
 
